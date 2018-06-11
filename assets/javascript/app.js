@@ -1,5 +1,5 @@
-$("#startButton").click(function() {
-    window.location.href="index1.html";
+$("startBut").click(function() {
+    window.location.href="indexQ1.html";
     
     });
 
