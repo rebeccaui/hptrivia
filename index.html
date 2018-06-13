@@ -6,15 +6,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Bad+Script|Lora|Merienda|Rancho|Special+Elite" rel="stylesheet">
     <title>Harry Potter Trivia Game</title>
 </head>
+
 <body>
+    <nav class="navFlexbox">
+            &#9889; Harry Potter Trivia &#9889;
+    </nav>
 
-    <nav class="navFlexbox">Harry Potter Trivia</nav>
-    <button id="startBut">Start</button>
-
+    <div class="container"> 
+        <div class="jumbotron">
+            <!--Introduction page-->
+           <!-- <div class="row" id="introText">
+                <h2><strong>Welcome to the</strong></h2> 
+                <h1>Harry Potter</h1>
+                <h2><strong>Trivia Challenge!</strong></h2>
+                <br>
+                <h3>You will have <strong><em>30 seconds</em></strong> to answer each question!</h3>
+                <h3>Click the button below to begin the quiz!</h3>
+                <br>
+                <button id="gameBegin" class="button">Start</button> 
+            </div>-->
+            <!--Quiz questions and answers-->
+            <div id="timeLeft"></div>
+            <div class="rowQuestion"></div>
+            <div class="rowAnswers">
+                <ol type="A" class="answerChoicesFill">
+                    <li id="zero"></li>
+                    <li id="one"></li>
+                    <li id="two"></li>
+                    <li id="three"></li>
+                </ol>
+            </div>
+            <!--Response page (correct answer, incorrect answer, time's up)-->
+            <div id="verbalResponse"></div>
+            <div id="correctAnswer"></div>
+            <div id="gif"></div>
+            <!--Score page-->
+            <div id="finalResponse"></div>
+            <div id="userCorrect"></div>
+            <div id="userIncorrect"></div>
+            <div id="userUnanswered"></div>
+            <div id="startOver"></div>
+        </div>    
+    </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
+
+           <!--<div class="">
+                    <h2>Q1. What is Hermione's middle name?</h2>
+                </div>
+                <div class="rowAnswers">
+                    <ol type="A"> -->
+                        <!--Name group defines the radio group. Value invisible unless coded to display.-->
+                       <!-- <li><input type="radio" id="questionOneA" name="questionOne" value="Jan">
+                            <label for="questionOneA">Jan</label>
+                        </li>
+                        <li><input type="radio" id="questionOneB" name="questionOne" value="Joan">
+                            <label for="questionOneB">Joan</label>
+                        </li>
+                        <li><input type="radio" id="questionOneC" name="questionOne" value="Jane">
+                            <label for="questionOneC">Jane</label>
+                        </li>
+                        <li><input type="radio" id="questionOneD" name="questionOne" value="Jenee">
+                            <label for="questionOneD">Jenee</label>
+                        </li>
+                    </ol>
+                </div>
+                <button id="submitAnswer" class="button">Submit</button>-->
