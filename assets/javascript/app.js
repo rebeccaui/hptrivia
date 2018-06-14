@@ -1,4 +1,7 @@
+$(document).ready(function(){
+
 //Each question with answer choices is an object in this array
+var numQ = 0;
 var allQuestions = [{
     question: "Q1. What is Hermione Granger's middle name?",
     answerChoices: ["Jan", "Joan", "Jane", "Jenee"],
@@ -60,41 +63,37 @@ var verbalResponse = {
 }
 
 var intervalId;
-var timeAlloted;
+var timeAllotted;
 var questionTimer = 30; //The user has 30 seconds to answer each question.
 var responseTimer = 5; //The user has 5 seconds to view the correct answer.
 //Display the correct answer as a string
-var correctAnswer = allQuestions[i].answer;
-
 var i = 0;
 var j;
+var correctAnswer = allQuestions[i].answer;
 
 //Variables for the finalScore 
 var userCorrect = 0;
 var userIncorrect = 0;
 var userUnanswered = 0;
 
-//DO NOT name buttons using "start"
-//Clicking the start button will hide the start button and reset the game
-$("#gameBegin").click(function() {
-   $(this).hide();  
-    reset();
-    });
-
 function intro(){
     //Show intro page
-    $("#introPage").hide();
+    $("#introPage").show();
     //Hide all question page divs, submit button, and final results page
-    $("#timeLeft").show();
+    $("#timeLeft").hide();
     $("#rowQuestion").hide();
     $("#rowAnswers").hide();
     $(".rowBtn").hide();
-    $(".submitBtn").hide();
     $("#finalScorePage").hide();
     userCorrect = 0;
     userIncorrect = 0;
     userUnanswered = 0;
-    $("#gameBegin").on("click", nextQuestion);
+    $("#gameBegin").click(function(){
+        $(this).attr("style", "display: none");
+        nextQuestion();
+    });
+}
+intro();
 
 function nextQuestion(){
     if (userCorrect + userIncorrect + userUnanswered >= allQuestions.length) {
@@ -102,98 +101,120 @@ function nextQuestion(){
     } else {
     $("#introPage").hide();
     $("responsePage").hide();
-    //Append the timer to the timeLeft div
+    $("#timeLeft").show();
     resetTimer();
+    showTimer();
+    //Start questionTimer
+    intervalId = setInterval(showTimer, questionTimer*1000);
     $(".rowQuestion").html("<h2>" + allQuestions[i].question + "</h2>");
         console.log("Question: " + allQuestions[i].question);
     //$(".rowAnswers").show().find(".answer").each(function(i)){
         //answerChoices displays in rowAnswers as radio button values and strings
-        $(".rowAnswers #zero").append("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[0] + "</input>");
-        $(".rowAnswers #one").append("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[1] + "</input>");
-        $(".rowAnswers #two").append("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[2] + "</input>");
-        $(".rowAnswers #three").append("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[3] + "</input>");
+        $(".rowAnswers #zero").html("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[0] + "</input>");
+        $(".rowAnswers #one").html("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[1] + "</input>");
+        $(".rowAnswers #two").html("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[2] + "</input>");
+        $(".rowAnswers #three").html("<input name='radioAns' type='radio'>" + allQuestions[i].answerChoices[3] + "</input>");
     //}
-        console.log("Answer Choices: " + allQuestions[i].answerChoices);
-        //Start questionTimer
-        intervalId = setInterval(showTimer, 1000);
+
+    //If I can't get the submit button to work
+   /* $(".rowAnswers").on("click", "li", function(){
+        var checkAnswer = $(this).text();
+        if (checkAnswer === correctAnswer[i]){
+            correct();
+        } else if (timeAllotted === 0){
+            timeUp();
+        } else {
+            incorrect();
+        }
+    })
+    */
+    $(".rowBtn").show();
+    $("#submitBtn").click(function(){
+        userGuess();
+    });
+    console.log("Answer Choices: " + allQuestions[i].answerChoices);
+    i++;
     }
+    console.log("Correct: " + userCorrect);
+    console.log("Incorrect: " + userIncorrect);
+    console.log("Unanswered: " + userUnanswered);
 }
-nextQuestion();
 
 //MIGHT NEED DIFFERENT CONDITION
 function userGuess(){
-    //When the user answers correctly, bring the user to the correct answer display page.
+    for(var j = 1; j <= 4; j++){
+        var radios = document.getElementsByName("radioAns");
+        for(var i = 0; i < allQuestions[i].answerChoices; i++) {
+        var radio = radios[j];
+        if(radio.value === "allQuestions[i].correctAnswer" && radio.checked){
+            correct();
+        }
+    }
+}
+  /*  //When the user answers correctly, bring the user to the correct answer display page.
     if (userGuess == correctAnswer) {
-        userCorrect++;
         correct();
     } else {
         //When the user answers incorrectly, bring the user to the incorrect answer display page.
-        //If the user submits no answer, bring the user to the incorrect answer display page.
-        userIncorrect++;
         incorrect();
-    }
-}
+    }*/
 
 function showTimer(){
-    if (timeAlloted >= 0) {
-        $("#timeLeft").html("Time Left: " + seconds);
+    if (timeAllotted >= 0) {
+        $("#timeLeft").html("Time Left: " + timeAllotted);
         timeAllotted--;
     } else {
         timeUp();
     }
 }
-showTimer();
+
 
 function timeUp(){
     //When the user runs out of time, bring the user to the out of time answer display page.
-    userUnanswered++;
     resetTimer();
     unanswered();
-    }
+}
 
 function resetTimer() {
     clearInterval(intervalId);
     timeAllotted = questionTimer;
     $("#timeLeft").empty();
 }
-
-function responseTimer(){
-    resetTimer();
-    setTimeout(nextQuestion, responseTimer*1000);
-}
         
 function correct(){
     userCorrect++;
-    $("#verbalResponse").append(verbalResponse.correct);
-    $("#correctAnswer").append(correctAnswer);
-    $("#gif").append(allQuestions[i].image);
+    $("#verbalResponse").html(verbalResponse.correct);
+    $("#correctAnswer").html(correctAnswer);
+    $("#gif").html(allQuestions[i].image);
     $("#introPage").hide();
     $(".rowBtn").hide();
     $("#finalScorePage").hide();
-    responseTimer();
-
+    resetTimer();
+    setTimeout(nextQuestion, responseTimer*1000);
 }
 
 function incorrect() {
     userIncorrect++;
-    $("#verbalResponse").append(verbalResponse.incorrect);
-    $("#correctAnswer").append(correctAnswer);
-    $("#gif").append(allQuestions[i].image);
+    $("#verbalResponse").html(verbalResponse.incorrect);
+    $("#correctAnswer").html(correctAnswer);
+    $("#gif").html(allQuestions[i].image);
     $("#introPage").hide();
     $(".rowBtn").hide();
     $("#finalScorePage").hide();
-    responseTimer();
+    resetTimer();
+    setTimeout(nextQuestion, responseTimer*1000);
 }
 
 function unanswered(){
     userUnanswered++;
-    $("#verbalResponse").append(verbalResponse.unanswered);
-    $("#correctAnswer").append(correctAnswer);
-    $("#gif").append(allQuestions[i].image);
+    $("#verbalResponse").html(verbalResponse.unanswered);
+    $("#correctAnswer").html(correctAnswer);
+    $("#gif").html(allQuestions[i].image);
     $("#introPage").hide();
     $(".rowBtn").hide();
     $("#finalScorePage").hide();
-    responseTimer();
+    resetTimer();
+    setTimeout(nextQuestion, responseTimer*1000);
 }
 
 function finalScore(){
@@ -203,35 +224,23 @@ function finalScore(){
     $("#rowQuestion").hide();
     $("#rowAnswers").hide();
     $(".rowBtn").hide();
-    $("#finalResponse").append(verbalResponse.quizDone + "<br>" + praise);
+    $("#finalResponse").html(verbalResponse.quizDone + "<br>" + praise);
     var praise = "Bloody Hell! It's time to hit the books! You've earned the rank of MUGGLE!";
         if (userCorrect >= 9) {
-            praise = "Bloody Brilliant! You've achieved the rank of HEADMASTER!";
+            praise = "Merlin's Beard! You've achieved the rank of HEADMASTER!";
         } else if (userCorrect > 7) {
             praise = "Wicked! You've achieved the rank of HEAD BOY or HEAD GIRL!";
         } else if (userCorrect > 6) {
-            praise = "Merlin's Beard! You've earned the rank of PREFECT!";
+            praise = "Bloody Brilliant! You've earned the rank of PREFECT!";
         } else if (userCorrect > 4) {
             praise = "Bloody Hell! You've earned the rank of SQUIB! Keep reading!";
         } 
-    $("#userCorrect").append("Correct: " + userCorrect);
-    $("#userIncorrect").append("Incorrect: " + UserIncorrect);
-    $("#userUnanswered").append("Unanswered: " + UserUnanswered);
+    $("#userCorrect").html("Correct: " + userCorrect);
+    $("#userIncorrect").html("Incorrect: " + UserIncorrect);
+    $("#userUnanswered").html("Unanswered: " + UserUnanswered);
     $(".rowBtn").hide();
-    $("#startOver").append("<button id='startOverBtn'>Start Over?</button>");
+    $("#startOver").html("<button id='startOverBtn'>Start Over?</button>");
     $("#startOver").on("click", introPage);
 }
-$(document).ready(intro);
 
-/*var answers = new Array(10);
-    answers[0] = "Jane";
-    answers[1] = "7";
-    answers[2] = "Oculus Reparo"
-    answers[3] = "Jack Russell Terrier"
-    answers[4] = "Katie Bell"
-    answers[5] = "Bulgaria"
-    answers[6] = "12 Grimmauld Place"
-    answers[7] = "Veritaserum"
-    answers[8] = "gillyweed"
-    answers[9] = "All was well."*/
-    
+});

@@ -55,8 +55,6 @@ html {
      color: black;
  }
 
-
-
 h1 jumbotron{
     font-family: 'Rancho', cursive;
 }
@@ -84,10 +82,6 @@ h2 {
     font-family: 'Rancho', cursive;
     background-color: rgb(235, 235, 69);
     opacity: 1 !important;
-}
-
-.submitBtn {
-    
 }
 
 #gif {
