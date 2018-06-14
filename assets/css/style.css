@@ -30,19 +30,23 @@ html {
  }
 
  .jumbotron {
+     color: white !important;
      padding: 10px 10px;
      border-style: 7px solid black;
      margin: 30px 30px;
      text-align: center;
-     background-color: rgba(104, 98, 138, .3) !important;
-    /* background-color: transparent !important;*/
+     background-color: rgba(255,255,255, 0.25) !important;
+     /* background-color: transparent !important; */
      overflow: hidden;
      min-height: 400px;
-
  }
 
  ol {
      list-style-type: none;
+
+ }
+ ol input {
+     margin: 0 10px 0 0 !important;
  }
 
  .row {
@@ -80,6 +84,10 @@ h2 {
     font-family: 'Rancho', cursive;
     background-color: rgb(235, 235, 69);
     opacity: 1 !important;
+}
+
+.submitBtn {
+    
 }
 
 #gif {

@@ -19,7 +19,7 @@
     <div class="container"> 
         <div class="jumbotron">
             <!--Introduction page-->
-           <!-- <div class="row" id="introText">
+           <div class="row" id="introPage">
                 <h2><strong>Welcome to the</strong></h2> 
                 <h1>Harry Potter</h1>
                 <h2><strong>Trivia Challenge!</strong></h2>
@@ -28,10 +28,11 @@
                 <h3>Click the button below to begin the quiz!</h3>
                 <br>
                 <button id="gameBegin" class="button">Start</button> 
-            </div>-->
+            </div>
             <!--Quiz questions and answers-->
             <div id="timeLeft"></div>
             <div class="rowQuestion"></div>
+            <br>
             <div class="rowAnswers">
                 <ol type="A" class="answerChoicesFill">
                     <li id="zero"></li>
@@ -40,16 +41,28 @@
                     <li id="three"></li>
                 </ol>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="rowBtn">
+                <button class="button submitBtn">Submit</button>
+            </div>
             <!--Response page (correct answer, incorrect answer, time's up)-->
-            <div id="verbalResponse"></div>
-            <div id="correctAnswer"></div>
-            <div id="gif"></div>
+            <div id="responsePage">
+                <div id="verbalResponse"></div>
+                <div id="correctAnswer"></div>
+                <div id="gif"></div>
+            </div>
             <!--Score page-->
-            <div id="finalResponse"></div>
-            <div id="userCorrect"></div>
-            <div id="userIncorrect"></div>
-            <div id="userUnanswered"></div>
-            <div id="startOver"></div>
+            <div id="finalScorePage">
+                <div id="finalResponse"></div>
+                <div id="praise"></div>
+                <div id="userCorrect"></div>
+                <div id="userIncorrect"></div>
+                <div id="userUnanswered"></div>
+                <div id="startOver"></div>
+            </div>
         </div>    
     </div>
     
@@ -57,25 +70,3 @@
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
-
-           <!--<div class="">
-                    <h2>Q1. What is Hermione's middle name?</h2>
-                </div>
-                <div class="rowAnswers">
-                    <ol type="A"> -->
-                        <!--Name group defines the radio group. Value invisible unless coded to display.-->
-                       <!-- <li><input type="radio" id="questionOneA" name="questionOne" value="Jan">
-                            <label for="questionOneA">Jan</label>
-                        </li>
-                        <li><input type="radio" id="questionOneB" name="questionOne" value="Joan">
-                            <label for="questionOneB">Joan</label>
-                        </li>
-                        <li><input type="radio" id="questionOneC" name="questionOne" value="Jane">
-                            <label for="questionOneC">Jane</label>
-                        </li>
-                        <li><input type="radio" id="questionOneD" name="questionOne" value="Jenee">
-                            <label for="questionOneD">Jenee</label>
-                        </li>
-                    </ol>
-                </div>
-                <button id="submitAnswer" class="button">Submit</button>-->
