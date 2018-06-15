@@ -4,12 +4,11 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-color: rgb(4, 4, 32);
- }
+}
 
- body {
+body {
     background-color: transparent !important;
-    width:1140px;
-    max-width: 100%;
+    width:100%;
     margin: auto !important;
 }
  
@@ -20,78 +19,104 @@ html {
     justify-content: center;
     width: 100%;
     height: 40px;
-    /* text-shadow: .5%; */
     font-size: 28px;
     border-bottom-style: solid;
     border-bottom-color: black;
     border-width: 3px;
     font-family: 'Rancho', cursive;
 
- }
+}
 
- .jumbotron {
+.jumbotron {
      color: white !important;
      padding: 10px 10px;
      border-style: 7px solid black;
      margin: 30px 30px;
      text-align: center;
      background-color: rgba(255,255,255, 0.25) !important;
-     /* background-color: transparent !important; */
      overflow: hidden;
      min-height: 400px;
- }
+}
 
- ol {
+ol {
      list-style-type: none;
 
- }
- ol input {
+}
+ol input {
      margin: 0 10px 0 0 !important;
- }
+}
 
- .row {
+.row {
      opacity: 1;
      background-color: transparent;
      color: black;
- }
+}
 
-
-
-h1 jumbotron{
+#hpName {
     font-family: 'Rancho', cursive;
 }
  
 h2 {
      margin: auto;
      display: block;
- }
+}
 
- .rowQuestion {
-     padding: 0px 0px 10px 0px;;
- }
+.rowQuestion {
+     padding: 0px 0px 10px 0px;
 
- .rowAnswers {
+}
+
+.rowAnswers {
      font-size: 20px;
      text-align: left;
- }
 
-.button {
+}
+
+#startOver {
+     margin-top: 3em;
+}
+
+.button, button#startOverBtn{
     margin: auto;
+    color: black;
     display: block;
     height: 40px;
-    width: 100px;
+    min-width: 100px;
     font-size: 26px;
     font-family: 'Rancho', cursive;
-    background-color: rgb(235, 235, 69);
+    background-color: rgba(235, 235, 69, 1);
     opacity: 1 !important;
 }
 
-.submitBtn {
-    
+.button:hover, button#startOverBtn:hover {
+    background-color: rgba(235, 235, 69, 0.75);
 }
 
 #gif {
     margin: 20px;
+}
+
+#verbalResponse, #correctAnswer {
+    font-family: 'Arima Madurai', cursive;
+    font-size: 22px;
+}
+
+#praise {
+    font-size: 2em;
+}
+
+#finalResponse {
+    font-weight: bold;
+    font-size: 1.5m;
+}
+
+#finalScorePage {
+    font-family: 'Merienda', cursive;
+    font-size: 20px;
+}
+
+#finalScorePage div {
+    margin-bottom: 1em;
 }
  
 

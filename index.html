@@ -21,32 +21,25 @@
             <!--Introduction page-->
            <div class="row" id="introPage">
                 <h2><strong>Welcome to the</strong></h2> 
-                <h1>Harry Potter</h1>
+                <h1 id="hpName">Harry Potter</h1>
                 <h2><strong>Trivia Challenge!</strong></h2>
-                <br>
                 <h3>You will have <strong><em>30 seconds</em></strong> to answer each question!</h3>
                 <h3>Click the button below to begin the quiz!</h3>
-                <br>
                 <button id="gameBegin" class="button">Start</button> 
             </div>
             <!--Quiz questions and answers-->
-            <div id="timeLeft"></div>
-            <div class="rowQuestion"></div>
-            <br>
-            <div class="rowAnswers">
-                <ol type="A" class="answerChoicesFill">
-                    <li id="zero"></li>
-                    <li id="one"></li>
-                    <li id="two"></li>
-                    <li id="three"></li>
-                </ol>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="rowBtn">
-                <button class="button submitBtn">Submit</button>
+            <div id="questionPage">
+                <div id="timeLeft">Time Left: </div>
+                <div class="rowQuestion"></div>
+                <br>
+                <div class="rowAnswers">
+                    <ol type="A" class="answerChoicesFill">
+                        <li id="zero"></li>
+                        <li id="one"></li>
+                        <li id="two"></li>
+                        <li id="three"></li>
+                    </ol>
+                </div>
             </div>
             <!--Response page (correct answer, incorrect answer, time's up)-->
             <div id="responsePage">
