@@ -6,6 +6,7 @@ In this Harry Potter Trivia Game, my objective was to create a quiz that
   The game uses javascript features to create timers that listen to the user responses and each other. It also uses jQuery to dynamically display data across several arrays in a synchronous fashion. The greatest challenge I faced in creating this application was taking the game rules step-by-step from a user’s perspective in order to properly synchronize all the different aspects of the game. 
 
 Please enjoy!
+https://rwieberdink.github.io/TriviaGame/
   
 
 Coming Soon: Arcade-style high score board 
