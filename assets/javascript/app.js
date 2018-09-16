@@ -164,7 +164,7 @@ function correct(){
     //Display
     $("#verbalResponse").html(verbalResponse[0]).show();
     $("#correctAnswer").html(correctAnswer[i]).show();
-    $("#gif").html("<img src='" + gifArray[i] + "'>").show();
+    $("#gif").html("<img src='" + gifArray[i] + "' class='img-responsive' style='margin:0 auto;'>").show();
     //Hide other divs
     $("#timeLeft").hide();
     $(".rowQuestion").hide();
@@ -179,7 +179,7 @@ function incorrect() {
     //Display
     $("#verbalResponse").html(verbalResponse[1]).show();
     $("#correctAnswer").html(correctAnswer[i]).show();
-    $("#gif").html("<img src='" + gifArray[i] + "'>").show();
+    $("#gif").html("<img src='" + gifArray[i] + "' class='img-responsive' style='margin:0 auto;'>").show();
     //Hide other divs
     $("#timeLeft").hide();
     $(".rowQuestion").hide();
@@ -195,7 +195,7 @@ function unanswered(){
     //Display
     $("#verbalResponse").html(verbalResponse[2]).show();
     $("#correctAnswer").html(correctAnswer[i]).show();
-    $("#gif").html("<img src='" + gifArray[i] + "'>").show();
+    $("#gif").html("<img src='" + gifArray[i] + "' class='img-responsive' style='margin:0 auto;'>").show();
     //Hide other divs
     $("#timeLeft").hide();
     $(".rowQuestion").hide();
@@ -212,7 +212,7 @@ function finalScore(){
     $(".rowAnswers").hide();
     $("#verbalResponse").html(verbalResponse[2]).attr("style", "display: none");
     $("#correctAnswer").html(correctAnswer[i]).attr("style", "display: none");
-    $("#gif").html("<img src='" + gifArray[i] + "'>").attr("style", "display: none");
+    $("#gif").html("<img src='" + gifArray[i] + "' class='img-responsive' style='margin:0 auto;'>").attr("style", "display: none");
     //Displays
     if (userCorrect >= 9) {
         praise = "Merlin's Beard! You've achieved the rank of HEADMASTER!";
