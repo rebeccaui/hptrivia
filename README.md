@@ -1,5 +1,3 @@
-![image](https://cloud.githubusercontent.com/assets/389021/16107646/9729e556-33d8-11e6-933f-5b09fa3a53bb.png)
-
 # Harry Potter Trivia Game
 
   In this trivia game, my objective was to create a quiz that allows the user 30 seconds to answer each question, displays the correct answer and a response after each question for 5 seconds, and gives the user a wizarding rank at the end of the game according to their score!
